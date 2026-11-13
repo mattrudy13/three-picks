@@ -1,0 +1,11 @@
+{
+  "name": "three-picks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Three random college basketball spread picks from today's games, shared by everyone who opens the page.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "serve": "python3 -m http.server 8770"
+  }
+}

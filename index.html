@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Three Picks</title>
+<meta name="description" content="Three random college basketball spread picks from today's games. No method.">
+<meta name="theme-color" content="#1F4D3A">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Oswald:wght@500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<main class="stage">
+  <div class="printer" id="printer" aria-hidden="true">
+    <span class="printer-name">THREE PICKS</span>
+    <span class="led"></span>
+    <span class="slot"></span>
+  </div>
+  <div class="feed">
+    <p id="status" class="status" role="status"></p>
+    <article class="slip" id="slip" style="transform: translateY(-100%)">
+      <div class="slip-body">
+        <header class="slip-head">
+          <h1>THREE PICKS</h1>
+          <span id="slip-date" class="small"></span>
+        </header>
+        <p class="small sub">RANDOM 3-LEG SLIP · NO METHOD</p>
+        <ol id="legs" class="legs"></ol>
+        <div class="slip-foot"><span id="rolled"></span><span id="pool"></span></div>
+        <p id="msg" class="msg" hidden></p>
+        <button id="reroll" type="button">NEW PICKS</button>
+      </div>
+      <div class="tear" aria-hidden="true"></div>
+    </article>
+  </div>
+  <p class="fine">Same picks for everyone · DraftKings lines via ESPN · Just for fun</p>
+  <p id="mode" class="fine" hidden></p>
+</main>
+
+<div id="ball" class="ball" aria-hidden="true">
+  <svg viewBox="0 0 72 64" width="72" height="64">
+    <polygon points="10,22 16,10 27,6 33,2 44,6 55,4 62,13 68,24 64,32 70,41 61,52 50,55 43,62 31,58 20,60 12,51 4,44 8,34 3,27" fill="#F3EDE0"/>
+    <polygon points="16,10 27,6 30,20 18,24 10,22" fill="#E8DFCB"/>
+    <polygon points="27,6 33,2 44,6 38,18 30,20" fill="#F7F2E8"/>
+    <polygon points="44,6 55,4 62,13 49,21 38,18" fill="#DFD4BD"/>
+    <polygon points="62,13 68,24 64,32 52,30 49,21" fill="#D2C5AA"/>
+    <polygon points="64,32 70,41 61,52 54,42 52,30" fill="#C8B99B"/>
+    <polygon points="61,52 50,55 43,62 42,48 54,42" fill="#D4C8AE"/>
+    <polygon points="43,62 31,58 33,47 42,48" fill="#DDD2BB"/>
+    <polygon points="31,58 20,60 12,51 24,44 33,47" fill="#E4DAC6"/>
+    <polygon points="12,51 4,44 8,34 15,38 24,44" fill="#E0D6C1"/>
+    <polygon points="8,34 3,27 10,22 18,24 15,38" fill="#EBE3D1"/>
+    <polygon points="30,20 38,18 49,21 52,30 40,33 28,30" fill="#FBF8F0"/>
+    <polygon points="28,30 40,33 42,48 33,47 24,44 15,38 18,24 30,20" fill="#F8F4EA"/>
+    <polygon points="40,33 52,30 54,42 42,48" fill="#E9E0CC"/>
+    <path d="M30 20 L27 6 M38 18 L44 6 M49 21 L62 13 M52 30 L64 32 M54 42 L61 52 M42 48 L43 62 M33 47 L31 58 M24 44 L12 51 M15 38 L4 44 M18 24 L10 22 M28 30 L40 33 L42 48 M18 24 L30 20 L38 18 L49 21 L52 30 L54 42 M15 38 L24 44 L33 47" fill="none" stroke="#B8A988" stroke-width="0.9" stroke-linejoin="round"/>
+    <path d="M21 33 l8 -2 M23 37 l6 -1.5 M34 24 l7 1" fill="none" stroke="#6F6656" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M44 37 l6 2" fill="none" stroke="#B3261E" stroke-width="1.5" stroke-linecap="round"/>
+    <polygon points="10,22 16,10 27,6 33,2 44,6 55,4 62,13 68,24 64,32 70,41 61,52 50,55 43,62 31,58 20,60 12,51 4,44 8,34 3,27" fill="none" stroke="#A8987A" stroke-width="1.2" stroke-linejoin="round"/>
+  </svg>
+</div>
+<p id="announce" class="sr-only" aria-live="polite"></p>
+</body>
+</html>

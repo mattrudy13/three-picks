@@ -1,0 +1,274 @@
+:root {
+  --felt: #1F4D3A;
+  --felt-ink: #B9D3C3;
+  --paper: #FBF8F0;
+  --ink: #16130F;
+  --ink-2: #5C554A;
+  --ink-3: #6F6656;
+  --rule: #DDD5C5;
+  --rule-2: #CFC6B4;
+  --red: #B3261E;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --cond: Oswald, "Arial Narrow", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--felt); }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--felt);
+  color: var(--ink);
+  font-family: var(--mono);
+  overflow-x: hidden;
+}
+
+.stage {
+  width: min(500px, 100% - 32px);
+  margin: 0 auto;
+  padding: max(28px, env(safe-area-inset-top)) 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 700px) {
+  .stage { padding-top: 56px; }
+}
+
+/* ---------- printer ---------- */
+
+.printer {
+  position: relative;
+  z-index: 2; /* the slip feeds out from under its bottom lip */
+  width: 100%;
+  height: 64px;
+  background: #2E2E2E;
+  border-radius: 14px 14px 10px 10px;
+  box-shadow: 0 3px 0 #1B1B1B;
+}
+
+.printer-name {
+  position: absolute;
+  left: 18px;
+  top: 12px;
+  font-family: var(--cond);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: #9A9A9A;
+}
+
+.led {
+  position: absolute;
+  right: 18px;
+  top: 15px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3A4A3F;
+}
+
+.slot {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 12px;
+  height: 6px;
+  border-radius: 3px;
+  background: #0A0A0A;
+}
+
+.printer.printing { animation: buzz 0.07s linear infinite alternate; }
+
+.printer.printing .led,
+.printer.paused .led {
+  background: #4CFF8A;
+  box-shadow: 0 0 6px #4CFF8A;
+}
+
+@keyframes buzz {
+  from { transform: translateX(-0.6px); }
+  to { transform: translateX(0.6px); }
+}
+
+/* ---------- slip ---------- */
+
+.feed {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 32px);
+  margin-top: -15px;
+  overflow: hidden; /* hides the part of the slip still "inside" the printer */
+}
+
+.status {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 32px;
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--felt-ink);
+}
+
+.slip {
+  position: relative;
+  transform-origin: 50% 45%;
+}
+
+.slip-body {
+  background: var(--paper);
+  padding: 34px clamp(18px, 6vw, 32px) 24px;
+}
+
+.tear {
+  height: 12px;
+  background:
+    linear-gradient(135deg, var(--paper) 6px, transparent 0) 0 0 / 12px 12px repeat-x,
+    linear-gradient(225deg, var(--paper) 6px, transparent 0) 0 0 / 12px 12px repeat-x;
+}
+
+.slip-head {
+  display: flex;
+  flex-wrap: wrap; /* on the narrowest phones the date drops under the title instead of splitting it */
+  justify-content: space-between;
+  align-items: baseline;
+  column-gap: 12px;
+}
+
+.slip-head h1 { white-space: nowrap; }
+
+h1 {
+  margin: 0;
+  font-family: var(--cond);
+  font-weight: 600;
+  font-size: clamp(24px, 7vw, 30px);
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.small {
+  font-size: clamp(11px, 3vw, 12px);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.sub {
+  margin: 4px 0 0;
+  padding-bottom: 14px;
+  border-bottom: 2px dashed var(--rule-2);
+  white-space: normal;
+}
+
+.legs {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+}
+
+.leg {
+  display: flex;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.num {
+  flex-shrink: 0;
+  width: 20px;
+  padding-top: 7px;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.pick {
+  margin: 0;
+  font-family: var(--cond);
+  font-weight: 500;
+  font-size: clamp(21px, 6vw, 28px);
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.line {
+  color: var(--red);
+  white-space: nowrap;
+}
+
+.meta {
+  margin: 3px 0 0;
+  font-size: clamp(11px, 3.2vw, 13px);
+  color: var(--ink-2);
+}
+
+.nowrap { white-space: nowrap; }
+
+.slip-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  white-space: nowrap;
+  margin: 14px 0 16px;
+  font-size: 11px;
+  color: var(--ink-2);
+}
+
+.msg {
+  margin: 0 0 12px;
+  font-size: 12px;
+  color: var(--red);
+}
+
+#reroll {
+  width: 100%;
+  height: 52px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--cond);
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+
+#reroll:hover { background: #2C2722; }
+#reroll:focus-visible { outline: 3px solid #E9B949; outline-offset: 3px; }
+#reroll:disabled { cursor: default; }
+
+.fine {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 11px;
+  color: var(--felt-ink);
+}
+
+/* ---------- crumpled ball ---------- */
+
+.ball {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 72px;
+  height: 64px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.35));
+}
+
+.ball svg { display: block; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

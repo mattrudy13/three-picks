@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "current": {
+      ".read": true,
+      ".write": true,
+      ".validate": "newData.hasChildren(['slate', 'picks', 'poolSize', 'rollId', 'rolledAt'])",
+      "slate": { ".validate": "newData.isString() && newData.val().matches(/^20[0-9][0-9]-[01][0-9]-[0-3][0-9]$/)" },
+      "poolSize": { ".validate": "newData.isNumber() && newData.val() >= 3 && newData.val() <= 500" },
+      "rollId": { ".validate": "newData.isString() && newData.val().length <= 40" },
+      "rolledAt": { ".validate": "newData.val() === now" },
+      "picks": {
+        ".validate": "newData.hasChildren(['0', '1', '2']) && !newData.hasChild('3')",
+        "$i": {
+          ".validate": "newData.hasChildren(['id', 'team', 'opp', 'where', 'line', 'start'])",
+          "id": { ".validate": "newData.isString() && newData.val().length <= 20" },
+          "team": { ".validate": "newData.isString() && newData.val().length <= 60" },
+          "opp": { ".validate": "newData.isString() && newData.val().length <= 60" },
+          "where": { ".validate": "newData.val() === 'at' || newData.val() === 'vs'" },
+          "line": { ".validate": "newData.isNumber() && newData.val() >= -80 && newData.val() <= 80" },
+          "start": { ".validate": "newData.isString() && newData.val().length <= 30" },
+          "tv": { ".validate": "newData.isString() && newData.val().length <= 40" },
+          "$other": { ".validate": false }
+        }
+      },
+      "$other": { ".validate": false }
+    }
+  }
+}
