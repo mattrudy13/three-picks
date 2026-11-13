@@ -41,6 +41,15 @@ reasoning on purpose. Personal use (Rudy and friends). Static site, no build ste
 - Only `databaseURL` goes in `firebase-config.js` (no API key in the repo). The rules check shape and size only;
   anyone with the URL could write a fake slip. Accepted for a friends-only toy.
 
+## To do later
+
+- **Move the database to the US.** Firebase project `three-picks` has its Realtime Database in europe-west1
+  (`three-picks-default-rtdb.europe-west1.firebasedatabase.app`) only because us-central1 was down when Rudy set
+  it up on 2026-11-13; Rudy wants it in the US. Each sync is ~0.1 s slower from Europe, so nothing is broken. On
+  the free Spark plan a project gets one database and its region can't be changed, so the likely path is a new
+  Firebase project with a us-central1 database: paste `database.rules.json`, change `databaseURL` in
+  `firebase-config.js`, push. The current slip just gets re-rolled on the new database (nothing worth copying).
+
 ## Versions
 
-- **v0.1** (2026-11-13): first build.
+- **v0.1** (2026-11-13): first build, shared through Firebase (europe-west1, see To do later).
