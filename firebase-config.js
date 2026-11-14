@@ -4,5 +4,5 @@
 // goes in the repo. database.rules.json (pasted into the Firebase console) is what limits what can be written.
 //
 export const firebaseConfig = {
-  databaseURL: "https://three-picks-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: "https://three-picks-us-default-rtdb.firebaseio.com",
 };
