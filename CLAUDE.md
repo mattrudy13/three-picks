@@ -45,8 +45,8 @@ reasoning on purpose. Personal use (Rudy and friends). Static site, no build ste
 
 - Project `three-picks-us`, Realtime Database in us-central1 (`three-picks-us-default-rtdb.firebaseio.com`).
 - The first project, `three-picks`, has a europe-west1 database because us-central1 was down at setup on
-  2026-11-13. A database's region can't be changed, so the site moved to the new project the same evening. The
-  old project is no longer used and can be deleted.
+  2026-11-13. A database's region can't be changed, so the site moved to the new project the same evening, and
+  Rudy deleted the old project.
 - Changing the rules means pasting `database.rules.json` into the console again.
 
 ## Versions
